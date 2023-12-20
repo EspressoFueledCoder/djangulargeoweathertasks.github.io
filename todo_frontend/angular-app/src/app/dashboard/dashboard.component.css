@@ -1,0 +1,17 @@
+:host ::ng-deep .p-cell-editing {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+      }
+
+:host ::ng-deep .card {
+          margin-top: 60px;
+      }
+
+:host ::ng-deep .field {
+  display: flex;
+  align-items: center; /* Aligns items vertically at center */
+}
+
+:host ::ng-deep .field label {
+  margin-right: 10px; /* Adds 10px space between label and checkbox */
+}
