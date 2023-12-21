@@ -1,4 +1,7 @@
 import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-TYBACRQO.js";
+import {
   animate,
   animation,
   style,
@@ -6,9 +9,6 @@ import {
   trigger,
   useAnimation
 } from "./chunk-QEVZLRYQ.js";
-import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-TYBACRQO.js";
 import {
   SpinnerIcon
 } from "./chunk-JNQTGANH.js";
@@ -2542,4 +2542,4 @@ export {
   ScrollerModule,
   SearchIcon
 };
-//# sourceMappingURL=chunk-3BZVLFUH.js.map
+//# sourceMappingURL=chunk-WXWYFXPZ.js.map
