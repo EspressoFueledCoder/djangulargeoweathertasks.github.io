@@ -30,11 +30,15 @@ import { MenuModule } from 'primeng/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { DashboardComponent } from'./dashboard/dashboard.component';
+import { ServerListComponent } from './server/server.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
+    DashboardComponent,
+    ServerListComponent,
   ],
   imports: [
     AppRoutingModule,

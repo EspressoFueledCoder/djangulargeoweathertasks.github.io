@@ -30,11 +30,8 @@ export class ServerListComponent implements OnInit {
   // Initialize an empty server object as a baseline structure for servers
   empty_server: Server = {
     id: undefined,        
-    title: '',           
-    description: '',     
-    location: '',        
-    temperature: undefined,
-    is_done: false       
+    name: '',           
+    ip_address: ''
   };
 
   // Reactive property for binding and handling the single selected or edited server
@@ -74,24 +71,6 @@ export class ServerListComponent implements OnInit {
     // Retrieve the initial list of servers via the ApiService
     this.getList();
 
-    // Fetch country locations using the LocationService and process the response
-    this.locationService.getAllCountries().subscribe(
-      (data: any[]) => {
-        // Mapping received location data into a usable structure for the UI
-        this.locationsObjects = data.map((location) => ({
-          alpha2Code: location.alpha2Code,
-          capital: location.capital,
-        }));
-
-        // Concatenate location names and codes for better visualization and sort them
-        this.locations = this.concatenateLocationDetails(this.locationsObjects).sort();
-      },
-      (error: any) => {
-        // Error handler for failed location fetch operation
-        console.error('Error fetching countries', error);
-      }
-    );
-
     // Initializing available statuses for binding to a server status dropdown
     this.statuses = [{ label: 'true', value: 'true' }, { label: 'false', value: 'false' }]
   }
@@ -107,7 +86,6 @@ export class ServerListComponent implements OnInit {
       (response: Server[]) => {
         // Success handler: set the servers array and call method to process temperatures
         this.servers = response;
-        this.processTemperatures(this.servers);
         // Display success message using PrimeNG's message service
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Success: Servers retrieved' });
       },
@@ -116,23 +94,6 @@ export class ServerListComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error: Servers not retrieved' });
       }
     );
-  }
-
-  // Method to process temperature data for each server using the WeatherService
-  processTemperatures(servers: Server[]) {
-    servers.forEach(server => {
-      if (!server.is_done) {
-        // Fetch weather data for incomplete servers only
-        this.weatherService.getWeather(server.location).subscribe(
-          (data: any) => {
-            // Log weather data for debugging purposes
-            console.log(data);
-            // Update server temperature with weather data
-            server.temperature = data.main.temp;
-          }
-        )
-      }
-    })
   }
 
   // Method to update a server using the ApiService and refreshing the server list upon success
@@ -172,11 +133,6 @@ export class ServerListComponent implements OnInit {
     this.server = this.empty_server;
     this.submitted = false;
     this.serverDialog = true;
-  }
-
-  // Handler for initializing row edit operation; resets a server's completion status
-  onRowEditInit(server: Server) {
-    server.is_done = false;
   }
 
   // Handler for saving edited server on row; triggers server update process

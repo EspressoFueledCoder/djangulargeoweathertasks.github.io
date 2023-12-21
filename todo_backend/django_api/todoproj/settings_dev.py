@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'todoapi',
     'corsheaders',
+    'server_api',
 ]
 
 MIDDLEWARE = [

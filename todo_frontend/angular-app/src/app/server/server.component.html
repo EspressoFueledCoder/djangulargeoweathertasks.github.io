@@ -29,13 +29,13 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label style="margin-right: 62px;" for="title">name</label>
-            <input type="text" pInputText id="title" [(ngModel)]="server.title" required autofocus />
-            <small class="p-error" *ngIf="submitted && !server.title">title is required.</small>
+            <input type="text" pInputText id="title" [(ngModel)]="server.name" required autofocus />
+            <small class="p-error" *ngIf="submitted && !server.name">title is required.</small>
         </div>
         <div class="field">
             <label for="description">ip adress</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="server.description" required rows="3" cols="52"></textarea>
-            <small class="p-invalid" *ngIf="submitted && !server.description">description is required.</small>
+            <textarea id="description" pInputTextarea [(ngModel)]="server.ip_address" required rows="3" cols="52"></textarea>
+            <small class="p-invalid" *ngIf="submitted && !server.ip_address">description is required.</small>
         </div>
 
     </ng-template>

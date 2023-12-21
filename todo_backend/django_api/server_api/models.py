@@ -15,8 +15,8 @@ from core.models import TimeStampedModel
 
 # Stores a server
 class Server(TimeStampedModel):
-    name = models.CharField(max_length=50)
-    ip_address = models. GenericIPAddressField()
+    name = models.CharField(max_length=50, unique=True)
+    ip_address = models. GenericIPAddressField(unique=True)
 
     # Meta data about the database table.
     class Meta:

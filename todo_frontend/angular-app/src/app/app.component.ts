@@ -18,11 +18,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      {label: 'Dashboard', icon: 'fa fa-home'},
-      {label: 'All Tasks', icon: 'fa fa-calendar'},
-      {label: 'Servers', icon: 'fa fa-tasks'},
-      {label: 'My Profile', icon: 'fa fa-users'},
-      {label: 'Settings', icon: 'fa fa-sliders'},
+      {label: 'Dashboard', icon: 'fa fa-home',routerLink: ['/dashboard']},
+      {label: 'All Tasks', icon: 'fa fa-calendar',routerLink: ['/tasks']},
+      {label: 'Servers', icon: 'fa fa-tasks',routerLink: ['/servers']},
+      {label: 'My Profile', icon: 'fa fa-users',routerLink: ['/profile']},
+      {label: 'Settings', icon: 'fa fa-sliders',routerLink: ['/settings']},
     ];
   }
 
