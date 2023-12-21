@@ -44,3 +44,7 @@ body .p-menu .p-menuitem :focus {
   background-color: #F15B2A !important;
 }
 
+ul[role=menu] {
+  padding: 0;
+}
+
