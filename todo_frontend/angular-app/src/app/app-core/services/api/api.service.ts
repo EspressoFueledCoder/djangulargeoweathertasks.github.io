@@ -56,6 +56,7 @@ export class ApiService {
 
   // Update a Server.
   public putServer(server: Server) {
+    console.log(server);
     return this.http.put(`${this.URL}/server/${server.id}/`,server);
   }
 

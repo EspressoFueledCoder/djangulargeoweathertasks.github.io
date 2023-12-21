@@ -26,5 +26,5 @@ urlpatterns = [
     path('api/task/', todoapi_views.TaskList.as_view(), name='task-list'),
     path('api/task/<int:task_id>/', todoapi_views.TaskDetail.as_view(), name='task-detail'),
     path('api/server/', serverapi_views.ServerList.as_view(), name='server-list'),
-    path('api/server/<int:tserver_id>/', serverapi_views.ServerDetail.as_view(), name='server-detail'),
+    path('api/server/<int:server_id>/', serverapi_views.ServerDetail.as_view(), name='server-detail'),
 ]

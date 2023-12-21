@@ -135,6 +135,11 @@ export class ServerListComponent implements OnInit {
     this.serverDialog = true;
   }
 
+  // Handler for initializing row edit operation; resets a task's completion status
+  onRowEditInit(task: Server) {
+    
+  }
+
   // Handler for saving edited server on row; triggers server update process
   onRowEditSave(server: Server) {
     this.updateServer(server);

@@ -21,6 +21,36 @@
                 <th style="width:8rem"></th>
             </tr>
         </ng-template>
+        <ng-template pTemplate="body" let-server let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="server">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="server.name">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{server.name}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="server.ip_address" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{server.ip_address}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(server)" class="p-button-rounded p-button-text"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(server)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(server, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    <button *ngIf="!editing" pButton pRipple type="button" pDeleteRow icon="pi pi-trash" (click)="onRowDelete(server, server.id)" class="p-button-rounded p-button-text p-button-danger"></button>
+                  </td>
+            </tr>
+        </ng-template>
     </p-table>
 </div>
 </div>
@@ -30,12 +60,12 @@
         <div class="field">
             <label style="margin-right: 62px;" for="title">name</label>
             <input type="text" pInputText id="title" [(ngModel)]="server.name" required autofocus />
-            <small class="p-error" *ngIf="submitted && !server.name">title is required.</small>
+            <small class="p-error" *ngIf="submitted && !server.name">name is required.</small>
         </div>
         <div class="field">
-            <label for="description">ip adress</label>
+            <label for="description">ip address</label>
             <textarea id="description" pInputTextarea [(ngModel)]="server.ip_address" required rows="3" cols="52"></textarea>
-            <small class="p-invalid" *ngIf="submitted && !server.ip_address">description is required.</small>
+            <small class="p-invalid" *ngIf="submitted && !server.ip_address">ip address is required.</small>
         </div>
 
     </ng-template>
