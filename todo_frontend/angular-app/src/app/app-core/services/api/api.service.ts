@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { Task } from '@interfaces/models';
+import { Task, Server } from '@interfaces/models';
 
 import { environment } from '../../../../environments/environment';
 
@@ -46,6 +46,27 @@ export class ApiService {
   // Create a Task.
   public postTask(new_task: Task) {
     return this.http.post(`${this.URL}/task/`,new_task);
+  }
+
+
+  // Get a list of servers
+  public getServers(): Observable<Server[]> {
+    return this.http.get<Server[]>(`${this.URL}/server/`);
+  }
+
+  // Update a Server.
+  public putServer(server: Server) {
+    return this.http.put(`${this.URL}/server/${server.id}/`,server);
+  }
+
+  // Delete a Server.
+  public deleteServer(server_id: number) {
+    return this.http.delete(`${this.URL}/server/${server_id}/`);
+  }
+
+  // Create a Server.
+  public postServer(new_server: Server) {
+    return this.http.post(`${this.URL}/server/`,new_server);
   }
 }
 

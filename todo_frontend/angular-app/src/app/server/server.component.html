@@ -1,0 +1,49 @@
+<p-toast></p-toast>
+
+<div class="flex flex-row justify-content-center align-items-center ">
+<div class="card">
+  
+  <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+          <h4>Servers</h4>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-button-sm" (click)="openNew()"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table [value]="servers" styleClass="p-datatable-sm p-datatable-gridlines" dataKey="id" editMode="row">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>name</th>
+                <th>ip address</th>
+                <th style="width:8rem"></th>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>
+
+<p-dialog [(visible)]="serverDialog" [style]="{width: '450px'}" header="Server Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="field">
+            <label style="margin-right: 62px;" for="title">name</label>
+            <input type="text" pInputText id="title" [(ngModel)]="server.title" required autofocus />
+            <small class="p-error" *ngIf="submitted && !server.title">title is required.</small>
+        </div>
+        <div class="field">
+            <label for="description">ip adress</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="server.description" required rows="3" cols="52"></textarea>
+            <small class="p-invalid" *ngIf="submitted && !server.description">description is required.</small>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

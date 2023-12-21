@@ -15,12 +15,12 @@ from .models import Server
 from .serializers import ServerSerializer
     
 class ServerList(generics.ListCreateAPIView):
-    # List/create servers.
+    # List/create Servers.
     queryset = Server.objects.all()
     serializer_class = ServerSerializer
 
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
-    # Get, Update, Delete single Task by id
+    # Get, Update, Delete single Server by id
     queryset = Server.objects.all()
     serializer_class = ServerSerializer
     lookup_url_kwarg = 'server_id'

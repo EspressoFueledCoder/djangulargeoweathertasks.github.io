@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from todoapi import views as todoapi_views
+from server_api import views as serverapi_views
 
 # TODO: if we plan to expand the app URLS hould nbe moved into the related apps
 urlpatterns = [
@@ -24,4 +25,6 @@ urlpatterns = [
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/task/', todoapi_views.TaskList.as_view(), name='task-list'),
     path('api/task/<int:task_id>/', todoapi_views.TaskDetail.as_view(), name='task-detail'),
+    path('api/server/', serverapi_views.ServerList.as_view(), name='server-list'),
+    path('api/server/<int:tserver_id>/', serverapi_views.ServerDetail.as_view(), name='server-detail'),
 ]

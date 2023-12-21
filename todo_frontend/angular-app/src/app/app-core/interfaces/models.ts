@@ -22,3 +22,10 @@ export interface LocationObject {
     alpha2Code: string;
     capital: string;
 }
+
+// Define the structure of a Server object.
+export interface Server {
+  id?: number;           // Unique identifier for the task.
+  name: string;        // The title of the task.
+  ip_address: string;  // A detailed description of the task.
+}
